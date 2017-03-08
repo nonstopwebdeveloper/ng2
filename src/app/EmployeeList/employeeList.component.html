@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
     	<div class="row">
-    		<input type="text" [(ngModel)]='color' name="filter" placeholder="Filter By">
+    		<input type="text" [(ngModel)]='listFilter' name="filter" placeholder="Filter By">
     	</div>
         <div class="row">
             <table class="table table-bordered" *ngIf="employeeList && employeeList.length ">
@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let employee of employeeList">
+                    <tr *ngFor="let employee of employeeList | employeeFilter: listFilter">
                         <td><span *ngIf="showNames">{{employee.realName}}</span></td>
                         <td>{{employee.name | uppercase}}</td>
                         <td>{{employee.superPower | uppercase}}</td>

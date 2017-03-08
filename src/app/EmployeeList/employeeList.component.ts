@@ -1,24 +1,24 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { iEmployee } from './employee';
 
 
 
 
 @Component ({
    selector: "sr-employeeList",
-   templateUrl: "app/EmployeeList/employeeList.component.html",
-   styleUrls: ["app/EmployeeList/employeeList.component.css"]
-
-
-
+   moduleId: module.id,
+   templateUrl: "employeeList.component.html",
+   styleUrls: ["employeeList.component.css"]
 })
 
-export class EmployeelistComponent {
+
+export class EmployeelistComponent implements OnInit {
 	panelTitle: string = "Superhero List";
 	buttonTitle: string = "There is no going back";
 	bold: string = "bold";
 	showNames: boolean = false;
-	color: string = "color";
-	employeeList: any[] = [
+	listFilter: string = "black";
+	employeeList: iEmployee[] = [
 		{
 			"realName" : "Bruce Wayne",
 			"name": "Batman",
@@ -42,5 +42,8 @@ export class EmployeelistComponent {
 
 	revealNames(): void {
 		this.showNames = !this.showNames;
+	}
+	ngOnInit(): void {
+		console.log('OnInit initialised...')
 	}
 }
