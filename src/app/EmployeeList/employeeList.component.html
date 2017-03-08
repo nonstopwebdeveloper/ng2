@@ -1,0 +1,32 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        {{panelTitle}}
+    </div>
+    <div class="panel-body">
+    	<div class="row">
+    		<input type="text" [(ngModel)]='color' name="filter" placeholder="Filter By">
+    	</div>
+        <div class="row">
+            <table class="table table-bordered" *ngIf="employeeList && employeeList.length ">
+                <thead>
+                    <tr>
+                        <td>
+                            <button class="btn btn-primary" [title]="buttonTitle" (click)="revealNames()">{{showNames ? 'Conceal':'Reveal'}} Identity</button>
+                        </td>
+                        <td>Name</td>
+                        <td>Super Power</td>
+                        <td>Suit Color</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employeeList">
+                        <td><span *ngIf="showNames">{{employee.realName}}</span></td>
+                        <td>{{employee.name | uppercase}}</td>
+                        <td>{{employee.superPower | uppercase}}</td>
+                        <td>{{employee.suitColor | uppercase}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
